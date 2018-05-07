@@ -50,22 +50,18 @@
                 font-size: 0.66vw;
                 color: #666;
             }
-
-            p {
-                font-size: 1vw;
-                margin-top: 0;
-            }
         }
 
         .description {
             padding: 1em;
             position: relative;
             z-index: 1;
-            height: 70px;
+            height: 75px;
             margin: 0;
 
             p {
                 margin-top: 0;
+                font-size: 1vw;
             }
 
             a {
