@@ -2,9 +2,10 @@
   "name": "story-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dnewh.github.io/fishbowl-onboarding-example",
   "dependencies": {
     "auth0-js": "^9.5.1",
-    "newsapi": "^2.2.2",
+    "gh-pages": "^1.1.0",
     "node-sass-chokidar": "^1.2.2",
     "npm-run-all": "^4.1.2",
     "react": "^16.3.2",
@@ -20,6 +21,7 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   }
 }

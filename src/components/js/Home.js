@@ -1,22 +1,31 @@
 import React, { Component } from 'react';
-import News from 'newsapi';
+import Request from 'request';
 
 import Story from './Story';
 
 import '../css/Home.css'
 
-const newsapi = new News('165f7e7dd53544689dba061fd91ddccd');
+const API_KEY = '165f7e7dd53544689dba061fd91ddccd';
+const language='en';
+const sources = 'bbc-news,the-verge,wired';
+const pageSize= '20';
+const options = {
+    url: `https://newsapi.org/v2/top-headlines?language=${language}&sources=${sources}&pageSize=${pageSize}`,
+    method: 'GET',
+    headers: {
+        'Authorization': `Basic ${API_KEY}`
+    }
+}
 
 class Home extends Component {
 
     componentWillMount() {
-        this.setState({ stories: []})
-        newsapi.v2.topHeadlines({
-            sources: 'bbc-news,the-verge',
-            language: 'en',
-        }).then(response => {
-            this.setState({ stories: response.articles});
-        });
+        let self = this;
+        self.setState({ stories: []})
+        Request(options, (res, body) => {
+            let articles = JSON.parse(body.body).articles;
+            self.setState({ stories: articles});
+        })
     }
 
     render() {
