@@ -1,0 +1,99 @@
+.card {
+    width: 70%;
+    box-shadow: 0 0 20px 0 rgba(#222, 0.9);
+    box-sizing: content-box;
+    margin-bottom: 2rem;
+
+
+    .storyWrapper {
+        min-height: 360px;
+        position: relative;
+        overflow: hidden;
+        
+        &:hover {
+            .content {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        transform: translateY(calc(70px + 1em));
+        transition: transform 0.4s;
+        background-color: #fff;
+        color: #222;
+
+        .meta {
+            padding: 0 1em;
+
+            h1 {
+                font-size: 1.33vw;
+                font-weight: 300;
+                color: #444;
+                transition-duration: 0.4s;
+
+                &:hover {
+                    color: #222;
+                }
+            }
+
+            h2 {
+                font-size: 0.85vw;
+                margin-bottom: 0;
+                color: #222;
+            }
+
+            h3 {
+                font-size: 0.66vw;
+                color: #666;
+            }
+
+            p {
+                font-size: 1vw;
+                margin-top: 0;
+            }
+        }
+
+        .description {
+            padding: 1em;
+            position: relative;
+            z-index: 1;
+            height: 70px;
+            margin: 0;
+
+            p {
+                margin-top: 0;
+            }
+
+            a {
+                font-size: 0.85vw;
+                transition: all 0.4s;
+
+                &:hover {
+                    font-size: 0.95vw;
+
+                    &::after {
+                        transform: translate(5px, -50%);
+                        opacity: 1;
+                    }
+                }
+
+                &::after {
+                    content: '\2192';
+                    opacity: 0;
+                    transform: translateY(0, -50%);
+                    transition-duration: 0.4s;
+                    margin-left: 0.5rem;
+                }
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+}
