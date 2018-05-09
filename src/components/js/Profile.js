@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
 
+import {provider} from '../../firebase.js';
+
 import '../css/Profile.css';
 
 class Profile extends Component {
-    componentWillMount() {
-        this.setState({ profile: {} });
-        const { userProfile, getProfile } = this.props.auth;
-        if (!userProfile) {
-            getProfile((err, profile) => {
-                this.setState({ profile });
+
+    login() {
+        let self = this;
+        self.props.auth.signInWithPopup(provider)
+            .then((result) => {
+                const user = {
+                    displayName: result.user.displayName,
+                    email: result.user.email,
+                    photoURL: result.user.photoURL
+                };
+                self.props.actions.addUser(user);
             })
-        } else {
-            this.setState({ profile: userProfile });
-        }
     }
 
     render() {
-        const { profile } = this.state;
+        const profile = this.props.currentUser;
         return (
             <div className='container'>
                 <div className="profileArea">
-                    <img src={profile.picture} alt={profile.name} />
-                    <h1>{profile.nickname}</h1>
-                    <h2>{profile.name}</h2>
+                    {this.props.currentUser ? (
+                        <div>
+                            <img src={profile.photoURL} alt={profile.displayName} />
+                            <h1>{profile.displayName}</h1>
+                            <h2>{profile.email}</h2>
+                        </div>
+                    ) : (
+                        <a className="action" onClick={this.login.bind(this)}>Log In</a>
+                    )}
+                    
                 </div>
             </div>
         )

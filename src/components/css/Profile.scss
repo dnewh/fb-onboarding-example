@@ -5,12 +5,26 @@
     padding-top: 3rem;
 
     .profileArea {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-        img {
-            border-radius: 50%;
+            img {
+                width: 7em;
+                border-radius: 50%;
+            }
+        }
+
+        a.action {
+            background: #06aad9;
+            color: #fff;
+            border: 1px solid #06aad9;
+    
+            &:hover {
+                background: #015f7a;
+                border: 1px solid #015f7a;
+            }
         }
     }
 }
